@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 
 import classes from "./Todo.module.css";
 import { isNotEmpty } from "../../util/validate";
@@ -16,9 +16,9 @@ const Todo = () => {
     reset: resetTodoInput,
   } = useInput(isNotEmpty);
 
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+  // useEffect(() => {
+  //   console.log(todos);
+  // }, [todos]);
 
   const changeTodoHandler = (nextItem) => {
     setTodos(
@@ -45,15 +45,14 @@ const Todo = () => {
 
     const timestamp = new Date().getTime();
 
-    const todoData = {
-      id: timestamp + 1,
-      text: todoValue,
-      packed: false,
-    };
-
-    setTodos((prevTodoState) => {
-      return [...prevTodoState, todoData];
-    });
+    setTodos([
+      ...todos,
+      {
+        id: timestamp + 1,
+        todo: todoValue,
+        isCompleted: false,
+      },
+    ]);
 
     resetTodoInput();
   };
@@ -84,12 +83,6 @@ const Todo = () => {
       </div>
       <div className={classes["todo-list"]}>
         <ul>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <span>TODO 1</span>
-            </label>
-          </li>
           <TodoList
             todos={todos}
             onChangeItem={changeTodoHandler}
@@ -102,3 +95,6 @@ const Todo = () => {
 };
 
 export default Todo;
+
+// Todo에서 todo입력시 todoList가 재평가 되는 경우가 생김
+//

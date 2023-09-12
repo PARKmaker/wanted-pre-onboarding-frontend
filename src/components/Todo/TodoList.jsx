@@ -1,38 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
 import classes from "./TodoList.module.css";
+import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, onChangeItem, onDeleteItem }) => {
-  const inputCheckHandler = (event, item) => {
-    onChangeItem({
-      ...item,
-      packed: event.target.checked,
-    });
-  };
+  const todosList = todos.map((todo) => (
+    <li key={todo.id}>
+      <TodoItem
+        todo={todo}
+        onChangeItem={onChangeItem}
+        onDeleteItem={onDeleteItem}
+      />
+    </li>
+  ));
 
   return (
     <div className={classes["todo-list"]}>
-      <ul>
-        {todos.map((item) => (
-          <li key={item.id} className={classes.item}>
-            <label>
-              <input
-                type="checkbox"
-                checked={item.packed}
-                onChange={(e) => inputCheckHandler(e, item)}
-              />
-              <span>{item.text}</span>
-            </label>
-            <button data-testid="modify-button">수정</button>
-            <button
-              data-testid="delete-button"
-              onClick={() => onDeleteItem(item.id)}
-            >
-              삭제
-            </button>
-          </li>
-        ))}
-      </ul>
+      <ul>{todosList}</ul>
     </div>
   );
 };
