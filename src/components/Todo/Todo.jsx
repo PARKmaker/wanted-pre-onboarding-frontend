@@ -9,21 +9,15 @@ import useHttp from "../../hooks/use-http";
 import TodoInput from "./TodoInput";
 
 const Todo = (props) => {
-  // console.log(props.todos);
-  console.log("Todo");
+  const [todos, setTodos] = useState(props.todos);
+  const { sendIsLoading, sendError, sendRequest: sendTodoRequest } = useHttp();
+  const {
+    updateIsLoading,
+    updateError,
+    sendRequest: updateTodoRequest,
+  } = useHttp();
 
-  const [todos, setTodos] = useState([]);
-  const { isLoading, error, sendRequest: sendTodoRequest } = useHttp();
-
-  // const {
-  //   value: todoValue,
-  //   isValid: todoIsValid,
-  //   valueChangeHadler: todoChangeHandler,
-  //   inputBlurHander: todoBlurHandler,
-  //   reset: resetTodoInput,
-  // } = useInput(isNotEmpty);
-
-  const changeTodoHandler = (nextItem) => {
+  const changeTodoHandler = async (nextItem) => {
     setTodos(
       todos.map((item) => {
         if (item.id === nextItem.id) {
@@ -33,10 +27,28 @@ const Todo = (props) => {
         }
       })
     );
+
+    updateTodoRequest({
+      url: `http://localhost:8000/todos/${nextItem.id}`,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getAuthToken()}`,
+      },
+      body: { todo: nextItem.todo, isCompleted: nextItem.isCompleted },
+    });
   };
 
   const deleteTodoHandler = (itemId) => {
     setTodos(todos.filter((item) => item.id !== itemId));
+
+    updateTodoRequest({
+      url: `http://localhost:8000/todos/${itemId}`,
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getAuthToken()}`,
+      },
+    });
   };
 
   const addTodo = (todoData) => {
@@ -44,8 +56,6 @@ const Todo = (props) => {
   };
 
   const addTodoHandler = async (textValue) => {
-    // console.log(textValue);
-
     sendTodoRequest(
       {
         url: "http://localhost:8000/todos",
@@ -59,61 +69,9 @@ const Todo = (props) => {
       addTodo
     );
   };
-  // const addTodo = (todoData) => {
-  //   setTodos([...todos, todoData]);
-  // };
-
-  // const addTodoHandler = async (event) => {
-  //   event.preventDefault();
-
-  //   if (!todoIsValid) {
-  //     return;
-  //   }
-
-  //   sendTodoRequest(
-  //     {
-  //       url: "http://localhost:8000/todos",
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${getAuthToken()}`,
-  //       },
-  //       body: { todo: todoValue },
-  //     },
-  //     addTodo
-  //   );
-
-  //   resetTodoInput();
-  // };
-
-  // console.log(todos);
-
   return (
     <Fragment>
       <TodoInput onAddTodo={addTodoHandler} />
-      {/* <div className={classes["action"]}>
-        <form onSubmit={addTodoHandler}>
-          <label>
-            <input
-              data-testid="new-todo-input"
-              type="text"
-              id="todoInput"
-              name="todoInput"
-              value={todoValue}
-              onChange={todoChangeHandler}
-              onBlur={todoBlurHandler}
-            />
-            <button
-              disabled={!todoIsValid}
-              type="submit"
-              data-testid="new-todo-add-button"
-            >
-              추가
-            </button>
-            {error ? <span>제출에 오류가 있습니다.</span> : null}
-          </label>
-        </form>
-      </div> */}
       <div className={classes["todo-list"]}>
         <ul>
           <TodoList
