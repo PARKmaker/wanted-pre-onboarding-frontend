@@ -2,23 +2,26 @@ import React, { Fragment, useState } from "react";
 
 import classes from "./Todo.module.css";
 import { isNotEmpty } from "../../util/validate";
+import { getAuthToken } from "../../util/auth";
 import useInput from "../../hooks/use-input";
 import TodoList from "./TodoList";
+import useHttp from "../../hooks/use-http";
+import TodoInput from "./TodoInput";
 
-const Todo = () => {
+const Todo = (props) => {
+  // console.log(props.todos);
+  console.log("Todo");
+
   const [todos, setTodos] = useState([]);
+  const { isLoading, error, sendRequest: sendTodoRequest } = useHttp();
 
-  const {
-    value: todoValue,
-    isValid: todoIsValid,
-    valueChangeHadler: todoChangeHandler,
-    inputBlurHander: todoBlurHandler,
-    reset: resetTodoInput,
-  } = useInput(isNotEmpty);
-
-  // useEffect(() => {
-  //   console.log(todos);
-  // }, [todos]);
+  // const {
+  //   value: todoValue,
+  //   isValid: todoIsValid,
+  //   valueChangeHadler: todoChangeHandler,
+  //   inputBlurHander: todoBlurHandler,
+  //   reset: resetTodoInput,
+  // } = useInput(isNotEmpty);
 
   const changeTodoHandler = (nextItem) => {
     setTodos(
@@ -36,30 +39,59 @@ const Todo = () => {
     setTodos(todos.filter((item) => item.id !== itemId));
   };
 
-  const addTodoHandler = (event) => {
-    event.preventDefault();
-
-    if (!todoIsValid) {
-      return;
-    }
-
-    const timestamp = new Date().getTime();
-
-    setTodos([
-      ...todos,
-      {
-        id: timestamp + 1,
-        todo: todoValue,
-        isCompleted: false,
-      },
-    ]);
-
-    resetTodoInput();
+  const addTodo = (todoData) => {
+    setTodos([...todos, todoData]);
   };
+
+  const addTodoHandler = async (textValue) => {
+    // console.log(textValue);
+
+    sendTodoRequest(
+      {
+        url: "http://localhost:8000/todos",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+        body: { todo: textValue },
+      },
+      addTodo
+    );
+  };
+  // const addTodo = (todoData) => {
+  //   setTodos([...todos, todoData]);
+  // };
+
+  // const addTodoHandler = async (event) => {
+  //   event.preventDefault();
+
+  //   if (!todoIsValid) {
+  //     return;
+  //   }
+
+  //   sendTodoRequest(
+  //     {
+  //       url: "http://localhost:8000/todos",
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${getAuthToken()}`,
+  //       },
+  //       body: { todo: todoValue },
+  //     },
+  //     addTodo
+  //   );
+
+  //   resetTodoInput();
+  // };
+
+  // console.log(todos);
 
   return (
     <Fragment>
-      <div className={classes["action"]}>
+      <TodoInput onAddTodo={addTodoHandler} />
+      {/* <div className={classes["action"]}>
         <form onSubmit={addTodoHandler}>
           <label>
             <input
@@ -78,9 +110,10 @@ const Todo = () => {
             >
               추가
             </button>
+            {error ? <span>제출에 오류가 있습니다.</span> : null}
           </label>
         </form>
-      </div>
+      </div> */}
       <div className={classes["todo-list"]}>
         <ul>
           <TodoList
@@ -97,4 +130,3 @@ const Todo = () => {
 export default Todo;
 
 // Todo에서 todo입력시 todoList가 재평가 되는 경우가 생김
-//
