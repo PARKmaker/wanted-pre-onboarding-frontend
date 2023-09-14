@@ -15,7 +15,7 @@ const TodoList = ({ todos, onChangeItem, onDeleteItem }) => {
   ));
 
   return (
-    <div className={classes["todo-list"]}>
+    <div className={classes["list"]}>
       <ul>{todosList}</ul>
     </div>
   );

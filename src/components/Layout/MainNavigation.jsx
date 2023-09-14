@@ -30,7 +30,7 @@ const MainNavigation = () => {
               Todo
             </NavLink>
           </li>
-          <li>
+          <li className={classes.sign}>
             <NavLink
               to="/signin"
               className={({ isActive }) =>
@@ -40,7 +40,7 @@ const MainNavigation = () => {
               로그인
             </NavLink>
           </li>
-          <li>
+          <li className={classes.sign}>
             <NavLink
               to="/signup"
               className={({ isActive }) =>

@@ -5,7 +5,7 @@ import RootPage from "./pages/RootPage";
 import SignupPage, { action as signupAction } from "./pages/SignupPage";
 import SigninPage, { action as SigninAction } from "./pages/SigninPage";
 import TodoPage, { loader as TodoPageLoader } from "./pages/TodoPage";
-import { checkAuthLoader, checkNotAuthLoader } from "./util/auth";
+import { checkNotAuthLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {

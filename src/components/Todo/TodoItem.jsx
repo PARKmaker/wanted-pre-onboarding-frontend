@@ -1,6 +1,7 @@
 import React, { Fragment, useRef, useState } from "react";
 
 import classes from "./TodoItem.module.css";
+import Button from "../../UI/Button";
 
 // 수정 텍스트 입력시 Todo useEffect가 실행, ref로 해결
 const TodoItem = ({ todo, onChangeItem, onDeleteItem }) => {
@@ -30,73 +31,101 @@ const TodoItem = ({ todo, onChangeItem, onDeleteItem }) => {
     todoContent = (
       <Fragment>
         <input
+          className={classes.input}
           type="text"
           ref={editTextInputRef}
           defaultValue={originalText}
           data-testid="modify-input"
-          // value={editText}
-          // onChange={editingTextChangeHandler}
-          // onChange={(event) => {
-          //   onChangeItem({
-          //     ...todo,
-          //     todo: event.target.value,
-          //   });
-          // }}
         />
-        <button
+      </Fragment>
+    );
+
+    todoButtonContent = (
+      <div className={classes["button-box"]}>
+        <Button
+          data-testid="submit-button"
+          button={{
+            onClick: buttonClickSubmitEditingHandler,
+          }}
+        >
+          제출
+        </Button>
+        <Button
+          data-testid="cancel-button"
+          button={{
+            onClick: inputCancelHandler,
+          }}
+        >
+          취소
+        </Button>
+        {/* <button
           data-testid="submit-button"
           onClick={buttonClickSubmitEditingHandler}
         >
           제출
         </button>
-      </Fragment>
-    );
-
-    todoButtonContent = (
-      <Fragment>
         <button data-testid="cancel-button" onClick={inputCancelHandler}>
           취소
-        </button>
-      </Fragment>
+        </button> */}
+      </div>
     );
   } else {
     todoContent = (
       <Fragment>
         <span>{todo.todo}</span>
-        <button data-testid="modify-button" onClick={() => setIsEditing(true)}>
-          수정
-        </button>
       </Fragment>
     );
 
     todoButtonContent = (
-      <Fragment>
+      <div className={classes["button-box"]}>
+        <Button
+          data-testid="modify-button"
+          button={{
+            onClick: () => setIsEditing(true),
+          }}
+        >
+          수정
+        </Button>
+        <Button
+          data-testid="delete-button"
+          button={{
+            onClick: () => onDeleteItem(todo.id),
+          }}
+        >
+          삭제
+        </Button>
+        {/* <button data-testid="modify-button" onClick={() => setIsEditing(true)}>
+          수정
+        </button>
         <button
           data-testid="delete-button"
           onClick={() => onDeleteItem(todo.id)}
         >
           삭제
-        </button>
-      </Fragment>
+        </button> */}
+      </div>
     );
   }
 
   return (
     <Fragment>
-      <label>
-        <input
-          type="checkbox"
-          checked={todo.isCompleted}
-          onChange={(event) => {
-            onChangeItem({
-              ...todo,
-              isCompleted: event.target.checked,
-            });
-          }}
-        />
-        {todoContent}
-      </label>
-      {todoButtonContent}
+      <div className={classes["item-box"]}>
+        <label className={classes.item}>
+          <input
+            className={classes.checkbox}
+            type="checkbox"
+            checked={todo.isCompleted}
+            onChange={(event) => {
+              onChangeItem({
+                ...todo,
+                isCompleted: event.target.checked,
+              });
+            }}
+          />
+          {todoContent}
+        </label>
+        {todoButtonContent}
+      </div>
     </Fragment>
   );
 };

@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from "react";
 
 import classes from "./Todo.module.css";
-import { isNotEmpty } from "../../util/validate";
+
 import { getAuthToken } from "../../util/auth";
-import useInput from "../../hooks/use-input";
 import TodoList from "./TodoList";
 import useHttp from "../../hooks/use-http";
 import TodoInput from "./TodoInput";
@@ -70,18 +69,14 @@ const Todo = (props) => {
     );
   };
   return (
-    <Fragment>
+    <div className={classes["todo-container"]}>
       <TodoInput onAddTodo={addTodoHandler} />
-      <div className={classes["todo-list"]}>
-        <ul>
-          <TodoList
-            todos={todos}
-            onChangeItem={changeTodoHandler}
-            onDeleteItem={deleteTodoHandler}
-          />
-        </ul>
-      </div>
-    </Fragment>
+      <TodoList
+        todos={todos}
+        onChangeItem={changeTodoHandler}
+        onDeleteItem={deleteTodoHandler}
+      />
+    </div>
   );
 };
 

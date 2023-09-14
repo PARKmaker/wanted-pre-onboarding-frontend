@@ -1,0 +1,25 @@
+/* .button {
+  background-color: transparent;
+  border: 1px solid #4f005f;
+  height: 2rem;
+  cursor: pointer;
+} */
+
+.button {
+  cursor: pointer;
+  margin: auto;
+  /* border-radius: 1px; */
+  line-height: 36px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.button:hover,
+.button:active {
+  background-color: gray;
+  border-color: gray;
+}
+
+.button:focus {
+  outline: none;
+}

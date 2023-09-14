@@ -1,15 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
-import MainNavigation from "../components/MainNavigation/MainNavigation";
+import MainNavigation from "../components/Layout/MainNavigation";
+
+import classes from "./RootPage.module.css";
 
 const RootPage = () => {
   return (
-    <Fragment>
+    <div className={classes["app-container"]}>
       <MainNavigation />
       <main>
         <Outlet />
       </main>
-    </Fragment>
+    </div>
   );
 };
 

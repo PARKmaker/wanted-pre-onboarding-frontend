@@ -1,13 +1,8 @@
 import React from "react";
 
 import SignupForm from "../components/InputForm/SignupForm";
-import { API_URL } from "../util/API_URL";
-import { json, redirect, useLoaderData } from "react-router-dom";
+import { json, redirect } from "react-router-dom";
 const SignupPage = () => {
-  // const token = useLoaderData();
-
-  // if
-
   return <SignupForm />;
 };
 

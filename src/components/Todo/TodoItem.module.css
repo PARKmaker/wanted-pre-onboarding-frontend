@@ -1,0 +1,42 @@
+.item-box {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 3.5rem;
+  border-bottom: 1px solid #ddd;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item {
+  margin-left: 1rem;
+  margin-right: 0.75rem;
+  width: 90%;
+  font-size: 1.25rem;
+}
+
+.checkbox {
+  margin-right: 1rem;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+}
+
+.button-box {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  border-left: 1px solid #ddd;
+}
+
+.input {
+  width: 95%;
+  height: 2.5rem;
+  border: 0;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: 550;
+  background-color: #ddd;
+}
