@@ -1,9 +1,9 @@
 import React from "react";
 
-import SignupForm from "../components/InputForm/SignupForm";
 import { json, redirect } from "react-router-dom";
+import Sign from "../components/Sign/Sign";
 const SignupPage = () => {
-  return <SignupForm />;
+  return <Sign type="signup" />;
 };
 
 export default SignupPage;

@@ -37,7 +37,7 @@ const SigninForm = (props) => {
         hasError={emailHasError}
         input={{
           id: "email",
-          type: "text",
+          type: "email",
           name: "email",
           value: emailValue,
           onChange: emailChangeHandler,
