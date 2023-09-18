@@ -5,9 +5,11 @@ import useInput from "../../hooks/use-input";
 import Input from "../../UI/Input";
 
 import { isIncludeAt, isEightChars } from "../../util/validate";
-import { Form } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 
 const Sign = ({ type }) => {
+  const errorType = useActionData();
+
   const {
     value: emailValue,
     isValid: emailIsValid,
@@ -76,6 +78,12 @@ const Sign = ({ type }) => {
             <button disabled={!formIsValid} data-testid="signup-button">
               회원가입
             </button>
+          )}
+          {errorType === "signup" && (
+            <p>중복된 이메일입니다. 다시 입력해주세요.</p>
+          )}
+          {errorType === "signin" && (
+            <p>이메일 혹은 비밀번호가 잘못 되었습니다.</p>
           )}
         </div>
       </div>

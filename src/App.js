@@ -6,11 +6,13 @@ import SignupPage, { action as signupAction } from "./pages/SignupPage";
 import SigninPage, { action as SigninAction } from "./pages/SigninPage";
 import TodoPage, { loader as TodoPageLoader } from "./pages/TodoPage";
 import { checkNotAuthLoader } from "./util/auth";
+import RootErrorBoundary from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
+    errorElement: <RootErrorBoundary />,
     children: [
       {
         index: true,

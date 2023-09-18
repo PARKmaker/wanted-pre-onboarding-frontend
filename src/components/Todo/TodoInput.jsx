@@ -49,14 +49,6 @@ const TodoInput = (props) => {
           >
             추가
           </Button>
-
-          {/* <button
-            disabled={!todoIsValid}
-            type="submit"
-            data-testid="new-todo-add-button"
-          >
-            추가
-          </button> */}
         </label>
       </form>
     </div>

@@ -25,7 +25,7 @@ export const action = async ({ request }) => {
   });
 
   if (response.status === 422 || response.status === 401) {
-    return response;
+    return "signin";
   }
 
   if (!response.ok) {

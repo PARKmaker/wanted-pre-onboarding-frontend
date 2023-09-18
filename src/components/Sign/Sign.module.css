@@ -31,3 +31,8 @@
 .form-action button {
   font-size: 1.2rem;
 }
+
+.form-action p {
+  margin-top: 1rem;
+  color: red;
+}
