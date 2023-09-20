@@ -1,17 +1,5 @@
 # 박상현
 
-## 프로젝트의 실행 방법
-
-```shell
-git clone
-npm install
-npm start
-```
-
-## 데모 영상
-
-## 배포 링크
-
 <div align="center">
 
   <h1>박상현 프리온보딩 사전과제</h1>
