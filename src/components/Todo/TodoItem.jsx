@@ -58,15 +58,6 @@ const TodoItem = ({ todo, onChangeItem, onDeleteItem }) => {
         >
           취소
         </Button>
-        {/* <button
-          data-testid="submit-button"
-          onClick={buttonClickSubmitEditingHandler}
-        >
-          제출
-        </button>
-        <button data-testid="cancel-button" onClick={inputCancelHandler}>
-          취소
-        </button> */}
       </div>
     );
   } else {
@@ -94,15 +85,6 @@ const TodoItem = ({ todo, onChangeItem, onDeleteItem }) => {
         >
           삭제
         </Button>
-        {/* <button data-testid="modify-button" onClick={() => setIsEditing(true)}>
-          수정
-        </button>
-        <button
-          data-testid="delete-button"
-          onClick={() => onDeleteItem(todo.id)}
-        >
-          삭제
-        </button> */}
       </div>
     );
   }

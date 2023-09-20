@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 import classes from "./Todo.module.css";
 
@@ -6,15 +6,12 @@ import { getAuthToken } from "../../util/auth";
 import TodoList from "./TodoList";
 import useHttp from "../../hooks/use-http";
 import TodoInput from "./TodoInput";
+import { baseUrl } from "../../api/instance";
 
 const Todo = (props) => {
   const [todos, setTodos] = useState(props.todos);
-  const { sendIsLoading, sendError, sendRequest: sendTodoRequest } = useHttp();
-  const {
-    updateIsLoading,
-    updateError,
-    sendRequest: updateTodoRequest,
-  } = useHttp();
+  const { sendRequest: sendTodoRequest } = useHttp();
+  const { sendRequest: updateTodoRequest } = useHttp();
 
   const changeTodoHandler = async (nextItem) => {
     setTodos(
@@ -28,7 +25,7 @@ const Todo = (props) => {
     );
 
     updateTodoRequest({
-      url: `http://localhost:8000/todos/${nextItem.id}`,
+      url: `${baseUrl}/todos/${nextItem.id}`,
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +39,7 @@ const Todo = (props) => {
     setTodos(todos.filter((item) => item.id !== itemId));
 
     updateTodoRequest({
-      url: `http://localhost:8000/todos/${itemId}`,
+      url: `${baseUrl}/todos/${itemId}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${getAuthToken()}`,
@@ -57,7 +54,7 @@ const Todo = (props) => {
   const addTodoHandler = async (textValue) => {
     sendTodoRequest(
       {
-        url: "http://localhost:8000/todos",
+        url: `${baseUrl}/todos`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",

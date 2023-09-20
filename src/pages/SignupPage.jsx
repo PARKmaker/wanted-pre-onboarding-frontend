@@ -2,6 +2,7 @@ import React from "react";
 
 import { json, redirect } from "react-router-dom";
 import Sign from "../components/Sign/Sign";
+import { baseUrl } from "../api/instance";
 
 const SignupPage = () => {
   return <Sign type="signup" />;
@@ -17,7 +18,7 @@ export const action = async ({ request }) => {
     password: data.get("password"),
   };
 
-  const response = await fetch("http://localhost:8000/auth/signup", {
+  const response = await fetch(`${baseUrl}/auth/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

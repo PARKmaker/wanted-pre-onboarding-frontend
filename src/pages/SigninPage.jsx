@@ -1,6 +1,7 @@
 import React from "react";
 import { json, redirect } from "react-router-dom";
 import Sign from "../components/Sign/Sign";
+import { baseUrl } from "../api/instance";
 
 const SigninPage = () => {
   return <Sign type="signin" />;
@@ -16,7 +17,7 @@ export const action = async ({ request }) => {
     password: data.get("password"),
   };
 
-  const response = await fetch("http://localhost:8000/auth/signin", {
+  const response = await fetch(`${baseUrl}/auth/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,11 +36,12 @@ export const action = async ({ request }) => {
   const resData = await response.json();
   const token = resData.access_token;
 
+  // onLogin(token);
   localStorage.setItem("token", token);
+
+  return redirect("/todo");
 
   // const expiration = new Date();
   // expiration.setHours(expiration.getHours() + 1);
   // localStorage.setItem("expiration", expiration.toISOString());
-
-  return redirect("/todo");
 };

@@ -8,38 +8,38 @@ import TodoPage, { loader as TodoPageLoader } from "./pages/TodoPage";
 import { checkNotAuthLoader } from "./util/auth";
 import RootErrorBoundary from "./pages/ErrorPage";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootPage />,
-    errorElement: <RootErrorBoundary />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "signup",
-        element: <SignupPage />,
-        loader: checkNotAuthLoader,
-        action: signupAction,
-      },
-      {
-        path: "signin",
-        element: <SigninPage />,
-        loader: checkNotAuthLoader,
-        action: SigninAction,
-      },
-      {
-        path: "todo",
-        element: <TodoPage />,
-        loader: TodoPageLoader,
-      },
-    ],
-  },
-]);
-
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootPage />,
+      errorElement: <RootErrorBoundary />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "signup",
+          element: <SignupPage />,
+          loader: checkNotAuthLoader,
+          action: signupAction,
+        },
+        {
+          path: "signin",
+          element: <SigninPage />,
+          loader: checkNotAuthLoader,
+          action: SigninAction,
+        },
+        {
+          path: "todo",
+          element: <TodoPage />,
+          loader: TodoPageLoader,
+        },
+      ],
+    },
+  ]);
+
   return <RouterProvider router={router} />;
 }
 
