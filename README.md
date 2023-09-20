@@ -31,9 +31,9 @@ npm start
 <!-- Screenshots -->
 
 ### :camera: 데모 영상
-
-<div align="center">
 [![Video Label](http://img.youtube.com/vi/QR0QRA5rwj0/0.jpg)](https://youtu.be/QR0QRA5rwj0?t=0s)
+<div align="center">
+
   
 </div>
 
