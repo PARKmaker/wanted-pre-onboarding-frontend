@@ -14,11 +14,11 @@
 
 ## :star2: 배포 링크
 
-<a href='https://d3llwf60qjrfnw.cloudfront.net/todo'>배포 사이트</a>
+<a href='https://d3llwf60qjrfnw.cloudfront.net'>배포 사이트</a>
 
 <!-- Screenshots -->
 
-### :camera: 데모 영상
+## :camera: 데모 영상
 [![Video Label](http://img.youtube.com/vi/QR0QRA5rwj0/0.jpg)](https://youtu.be/QR0QRA5rwj0?t=0s)
 
 ### 아키텍쳐
