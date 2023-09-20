@@ -32,12 +32,14 @@ npm start
 
 ### :camera: 데모 영상
 [![Video Label](http://img.youtube.com/vi/QR0QRA5rwj0/0.jpg)](https://youtu.be/QR0QRA5rwj0?t=0s)
-<div align="center">
 
-  
+### 아키텍쳐
+
+![image](https://github.com/PARKmaker/wanted-pre-onboarding-frontend/assets/77065758/fe1af72e-3821-40d7-924e-bda51a0898e2)
+
 </div>
 
-<!-- TechStack -->
+<!-- 사용 기술 스택 -->
 
 ### :space_invader: Tech Stack
 
@@ -57,14 +59,6 @@ npm start
     <li><a href="https://github.com/">Github actions</a></li>
   </ul>
 </details>
-
-<!-- Features -->
-
-### :dart: Features
-
-- Feature 1
-- Feature 2
-- Feature 3
 
 ### :key: Environment Variables
 
