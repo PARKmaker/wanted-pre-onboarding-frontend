@@ -27,6 +27,12 @@
 
 </div>
 
+### :dart: 특징
+
+- Custom Hook을 활용해 기능 재사용률 높임 - api 호출(use-http), input form 입력 상태(use-input)
+- react-router-dom의 로더와 액션을 통해 회원가입, 로그인, todo api 요청 구현
+- CI/CD를 위해 aws s3 - CloudFront - github Actions 사용
+
 <!-- 사용 기술 스택 -->
 
 ### :space_invader: Tech Stack
