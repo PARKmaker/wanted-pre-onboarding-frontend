@@ -2,13 +2,12 @@
 
 <div align="center">
 
-  <h1>박상현 프리온보딩 사전과제</h1>
+  <h1>React와 API를 활용한 Todo List</h1>
   
   <!-- <p>
     An awesome README template for your projects! 
   </p> -->
 </div>
-<br />
 
 <!-- About the Project -->
 
