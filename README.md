@@ -13,9 +13,7 @@
 
 ## :star2: 배포 링크
 
-<a href='https://d3llwf60qjrfnw.cloudfront.net'>배포 사이트</a> **: API 비활성화로 배포 중단했습니다.**
-
-## <!-- Screenshots -->
+<!-- Screenshots --> <a href='https://d3llwf60qjrfnw.cloudfront.net'>배포 사이트</a> **: API 비활성화로 배포 중단했습니다.**
 
 ## :camera: 데모 영상 : 유튜브 링크
 
