@@ -23,8 +23,6 @@
 
 ## 아키텍쳐
 
----
-
 ![image](https://github.com/PARKmaker/wanted-pre-onboarding-frontend/assets/77065758/fe1af72e-3821-40d7-924e-bda51a0898e2)
 
 </div>
@@ -92,14 +90,10 @@ Start the server
   npm start
 ```
 
----
-
 ## :grey_question: 개발하면서 고민한점
 
 - 로그인, 회원가입 폼 **재사용**을 위한 컴포넌트를 만들고 Custom Hook(use-input)을 만들어 폼 유효성 검사
 - “use-input”훅을 사용한 todoitem을 수정 할때마다 TodoList 재평가 → 커스텀훅은 onChange이벤트를 사용해서 입력마다 리 렌더링됨, useRef을 사용하여 해결
-
----
 
 ## :compass: Roadmap
 
@@ -172,5 +166,3 @@ Start the server
   - 취소버튼에는 `data-testid="cancel-button"` 속성을 부여해주세요
 - 제출버튼을 누르면 수정한 내용을 제출해서 내용이 업데이트 될 수 있도록 해주세요
 - 취소버튼을 누르면 수정한 내용을 초기화 하고, 수정모드를 비활성화 해주세요
-
----
