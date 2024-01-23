@@ -15,17 +15,12 @@
 
 ## [![Video Label](http://img.youtube.com/vi/QR0QRA5rwj0/0.jpg)](https://youtu.be/QR0QRA5rwj0?t=0s)
 
-## 아키텍쳐
-
-![image](https://github.com/PARKmaker/wanted-pre-onboarding-frontend/assets/77065758/fe1af72e-3821-40d7-924e-bda51a0898e2)
-
 </div>
 
 ### :dart: 특징
 
 - **Custom Hook을 활용해 기능 재사용률 높임** - api 호출(use-http), input form 입력 상태(use-input)
 - **react-router-dom**의 로더와 액션을 통해 회원가입, 로그인, todo api 요청 구현
-- aws s3 - CloudFront - github Actions 사용하여 배포 경험
 
 <!-- 사용 기술 스택 -->
 
