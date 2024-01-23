@@ -11,10 +11,6 @@
 
 <!-- About the Project -->
 
-## :star2: 배포 링크
-
-<a href='https://d3llwf60qjrfnw.cloudfront.net'>배포 사이트</a> **: API 비활성화로 배포 중단했습니다.**
-
 ## :camera: 데모 영상 : 유튜브 링크
 
 ## [![Video Label](http://img.youtube.com/vi/QR0QRA5rwj0/0.jpg)](https://youtu.be/QR0QRA5rwj0?t=0s)
@@ -29,7 +25,7 @@
 
 - **Custom Hook을 활용해 기능 재사용률 높임** - api 호출(use-http), input form 입력 상태(use-input)
 - **react-router-dom**의 로더와 액션을 통해 회원가입, 로그인, todo api 요청 구현
-- CI/CD를 위해 aws s3 - CloudFront - github Actions 사용
+- aws s3 - CloudFront - github Actions 사용하여 배포 경험
 
 <!-- 사용 기술 스택 -->
 
@@ -51,6 +47,12 @@
     <li><a href="https://github.com/">Github actions</a></li>
   </ul>
 </details>
+
+## :grey_question: 개발하면서 고민한점
+
+- 로그인, 회원가입 폼 **재사용**을 위한 컴포넌트를 만들고 Custom Hook(use-input)을 만들어 폼 유효성 검사
+- “use-input”훅을 사용한 todoitem을 수정 할때마다 TodoList 재평가 → 커스텀훅은 onChange이벤트를 사용해서 입력마다 리 렌더링됨, useRef을 사용하여 해결
+
 
 ### :key: Environment Variables
 
@@ -87,11 +89,6 @@ Start the server
 ```bash
   npm start
 ```
-
-## :grey_question: 개발하면서 고민한점
-
-- 로그인, 회원가입 폼 **재사용**을 위한 컴포넌트를 만들고 Custom Hook(use-input)을 만들어 폼 유효성 검사
-- “use-input”훅을 사용한 todoitem을 수정 할때마다 TodoList 재평가 → 커스텀훅은 onChange이벤트를 사용해서 입력마다 리 렌더링됨, useRef을 사용하여 해결
 
 ## :compass: Roadmap
 
